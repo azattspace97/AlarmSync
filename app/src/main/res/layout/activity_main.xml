@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#5D5D5D"
     tools:context=".MainActivity">
-
+<!--- 액션바 추가하기 -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="이름:홍길동\nid:hong_gil"
+        android:textSize="30dp"
+        android:drawableLeft="@mipmap/main_alarm_human"
+        >
+    </TextView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="9999년 99년 99일 99시 99분 99초\n상대방:홍길동\n내용:집으로가기"
+        android:textSize="18dp"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/main_alarmwindow"
+        android:drawableLeft="@mipmap/main_alarm_human"
+        android:layout_margin="30dp"
+        android:hint="알람을 추가하여 주십시오."
+        >
+    </Button>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/main_alarm_add"
+        android:layout_gravity="center"
+        >
+    </Button>
+</LinearLayout>
