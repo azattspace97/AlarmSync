@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.graduation.alarmsync.databinding.ActivityMainBinding;
@@ -33,7 +39,18 @@ public class MainActivity extends AppCompatActivity {
         binding.testbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.mainLayout.openDrawer(binding.drawer);
+                Button btn = new Button(MainActivity.this);
+                final int b = 0x1234;
+                btn.setId(b);
+                btn.setGravity(Gravity.TOP);
+                ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams
+                        (ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                binding.layoutAlarm.addView(btn, lp);
+
+                //btn.setBackgroundResource(R.drawable.main_alarmwindow);
+                binding.layoutMain.openDrawer(binding.drawer);
             }
         });
     }

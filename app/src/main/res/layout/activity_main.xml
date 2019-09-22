@@ -2,12 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/mainLayout"
+        android:id="@+id/layoutMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <LinearLayout
+            android:id="@+id/layoutAlarm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -21,6 +22,7 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/btnAlarm"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_margin="30dp"
@@ -32,6 +34,7 @@
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp"></Button>
+
 
                 <Button
                     android:id="@+id/testbtn"
