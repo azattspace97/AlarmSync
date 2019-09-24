@@ -38,17 +38,6 @@ public class MainActivity extends AppCompatActivity {
         binding.testbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button btn = new Button(MainActivity.this);
-                final int b = 0x1234;
-                btn.setId(b);
-                btn.setGravity(Gravity.TOP);
-                ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams
-                        (ViewGroup.LayoutParams.WRAP_CONTENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                binding.layoutAlarm.addView(btn, lp);
-
-                //btn.setBackgroundResource(R.drawable.main_alarmwindow);
                 binding.layoutMain.openDrawer(binding.drawer);
             }
         });
