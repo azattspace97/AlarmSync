@@ -13,7 +13,7 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        binding.signupButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        Intent intent = new Intent(this, LoadingActivity.class);
+        startActivity(intent);
+
         // getSupportActionBar().setTitle("ACTIONBAR");
         // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
         // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
