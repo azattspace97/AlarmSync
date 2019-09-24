@@ -33,40 +33,43 @@
             android:layout_marginTop="15dp"
             android:layout_below="@+id/edt_email" />
 
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:id="@+id/edit_pwdcheck"
+            android:layout_centerHorizontal="true"
+            android:hint="Repeat Password"
+            android:drawableLeft="@mipmap/login_icon1"
+            android:drawablePadding="15dp"
+            android:background="@drawable/login_edit"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/edit_pwd" />
+
 
         <Button
             android:layout_width="300dp"
             android:layout_height="55dp"
-            android:text="Log in"
+            android:text="Sign Up"
             android:textColor="@color/white"
             android:id="@+id/btn_login"
             android:textAllCaps="false"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/login_btn"
-            android:layout_below="@+id/edit_pwd" />
+            android:layout_below="@+id/edit_pwdcheck" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="55dp"
-            android:text="Sign up"
+            android:text="돌아가기"
             android:textColor="@color/white"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="70dp"
             android:id="@+id/btn_sign"
             android:textAllCaps="false"
             android:layout_centerHorizontal="true"
             android:background="@drawable/login_btn"
             android:layout_alignTop="@+id/btn_login"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember login"
-            android:textColor="@color/white"
-            android:id="@+id/checkBox"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/btn_sign"
-            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </layout>

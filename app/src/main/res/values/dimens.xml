@@ -3,4 +3,5 @@
     <dimen name="main_menu_icon_wh">40dp</dimen>
     <dimen name="main_menu_icon_marginH">20dp</dimen>
     <dimen name="main_menu_icon_marginV">10dp</dimen>
+    <dimen name="sign_radius">8dp</dimen>
 </resources>
