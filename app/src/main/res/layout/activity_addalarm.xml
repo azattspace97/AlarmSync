@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알람 추가"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            />
+
+        <Button
+            android:text="OK"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="@drawable/addalarm_btnok"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            />
+
+
+        <ImageView
+            android:id="@+id/ivTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/addalarm_title"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginTop="25dp"
+            ></ImageView>
+
+        <TimePicker
+            android:id="@+id/tp"
+            android:layout_below="@+id/ivTitle"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#A566FF"
+            android:timePickerMode="spinner">
+        </TimePicker>
+
+        <RelativeLayout
+            android:id="@+id/groupLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#8C8C8C"
+            android:layout_below="@id/tp">
+
+            <TextView
+                android:id="@+id/groupLayout_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:text="초대 보내기"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:id="@+id/groupLayout_friendsImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/groupLayout_title"
+                android:layout_marginLeft="40dp"
+                android:visibility="invisible"
+                android:src="@mipmap/main_alarm_human" />
+            <ImageView
+                android:id="@+id/groupLayout_dotdot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/groupLayout_friendsImage"
+                android:layout_marginTop="5dp"
+                android:visibility="invisible"
+                android:src="@mipmap/addalarm_dotdot" />
+            <Button
+                android:id="@+id/groupLayout_addFriends"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@+id/groupLayout_switch"
+                android:layout_marginTop="5dp"
+                android:visibility="invisible"
+                android:background="@mipmap/main_float"/>
+
+            <Switch
+                android:id="@+id/groupLayout_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>
