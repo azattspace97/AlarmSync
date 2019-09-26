@@ -11,20 +11,36 @@
             android:orientation="vertical"
             android:layout_width="280dp"
             android:layout_height="match_parent"
-            android:weightSum="100"
             android:layout_gravity="end"
             android:background="#FFFFFF"
-            android:gravity="center"
-            android:id="@+id/drawer"
+            android:id="@+id/drawer">
+            <!--
             app:headerLayout="@menu/main_setting_header"
-            app:menu="@menu/main_setting_box"
-            >
+            아래쪽은 RelativeLayout으로 감싸서 DB에서 친구목록 불러와서 Image,btn 식으로 뿌려주기.
+            -->
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:src="@mipmap/main_side_header_block"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_side_header_icon"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="친구" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:src="@mipmap/main_side_header_block"/>
+
         </com.google.android.material.navigation.NavigationView>
 
 
