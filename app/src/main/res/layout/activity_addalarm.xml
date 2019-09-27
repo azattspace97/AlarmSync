@@ -17,6 +17,7 @@
             />
 
         <Button
+            android:id="@+id/ok"
             android:text="OK"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
