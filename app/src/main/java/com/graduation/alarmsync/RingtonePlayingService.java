@@ -30,6 +30,7 @@ public class RingtonePlayingService extends Service {
     public void onCreate() {
         super.onCreate();
 
+
         if (Build.VERSION.SDK_INT >= 26) {
             String CHANNEL_ID = "default";
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
@@ -42,7 +43,6 @@ public class RingtonePlayingService extends Service {
                     .setContentTitle("알람시작")
                     .setContentText("알람음이 재생됩니다.")
                     .setSmallIcon(R.mipmap.icon)
-
                     .build();
 
             startForeground(1, notification);
@@ -68,33 +68,35 @@ public class RingtonePlayingService extends Service {
         }
 
         // 알람음 재생 X , 알람음 시작 클릭
-        if(!this.isRunning && startId == 1) {
+        //if(!this.isRunning && startId == 1) {
+        if(startId == 1) {
 
             mediaPlayer = MediaPlayer.create(this,R.raw.test);
             mediaPlayer.start();
 
             this.isRunning = true;
             this.startId = 0;
-        }
 
-        // 알람음 재생 O , 알람음 종료 버튼 클릭
-        else if(this.isRunning && startId == 0) {
-
+            /*
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
 
             this.isRunning = false;
             this.startId = 0;
+            */
+        }
+
+        // 알람음 재생 O , 알람음 종료 버튼 클릭
+        else if(this.isRunning && startId == 0) {
+
+
         }
 
         // 알람음 재생 X , 알람음 종료 버튼 클릭
-        else if(!this.isRunning && startId == 0) {
 
-            this.isRunning = false;
-            this.startId = 0;
 
-        }
+
 
         // 알람음 재생 O , 알람음 시작 버튼 클릭
         else if(this.isRunning && startId == 1){
@@ -105,6 +107,7 @@ public class RingtonePlayingService extends Service {
 
         else {
         }
+
         return START_NOT_STICKY;
     }
 

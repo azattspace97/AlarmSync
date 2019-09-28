@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -20,9 +19,11 @@ import com.graduation.alarmsync.databinding.ActivityAddalarmBinding;
 import java.util.Calendar;
 
 public class AddalarmActivity extends Activity {
+
     AlarmManager alarm_manager;
     Context context;
     PendingIntent pendingIntent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,42 @@ public class AddalarmActivity extends Activity {
             }
         });
 
+        binding.ok.setOnClickListener(new View.OnClickListener() {
+                                          @RequiresApi(api = Build.VERSION_CODES.M)
+                                          @Override
+                                          public void onClick(View v) {
+                                              Calendar cal = Calendar.getInstance();
+                                              cal.set(Calendar.HOUR_OF_DAY, binding.tp.getHour());
+                                              cal.set(Calendar.MINUTE, binding.tp.getMinute());
+                                              cal.set(Calendar.SECOND, 0);
+
+                                              Intent mintent = new Intent(AddalarmActivity.this, Alarm_Receiver.class);
+
+                                              PendingIntent mpending =
+                                                      PendingIntent.getBroadcast(
+                                                              AddalarmActivity.this,
+                                                              //requestCode,
+                                                              0,
+                                                              mintent,
+                                                              PendingIntent.FLAG_UPDATE_CURRENT
+                                                      );
+
+                                              AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                              malarm.set(
+                                                      AlarmManager.RTC_WAKEUP,
+                                                      cal.getTimeInMillis(),
+                                                      mpending
+                                              );
+
+                                              int hour = binding.tp.getHour();
+                                              int minute = binding.tp.getMinute();
+                                              Toast.makeText(AddalarmActivity .this,"Alarm 예정 " + hour + "시 " + minute + "분",Toast.LENGTH_SHORT).show();
+                                          }
+                                      });
+
+
+
+/*
         this.context = this;
         alarm_manager = (AlarmManager)getSystemService(ALARM_SERVICE);
 
@@ -61,6 +98,7 @@ public class AddalarmActivity extends Activity {
             public void onClick(View v) {
                 calendar.set(Calendar.HOUR_OF_DAY, binding.tp.getHour());
                 calendar.set(Calendar.MINUTE, binding.tp.getMinute());
+                calendar.set(Calendar.SECOND, 0);
 
                 int hour = binding.tp.getHour();
                 int minute = binding.tp.getMinute();
@@ -75,6 +113,7 @@ public class AddalarmActivity extends Activity {
 
             }
         });
+*/
     }
 
 }
