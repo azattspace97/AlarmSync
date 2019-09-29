@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomRightRadius="@dimen/addalarm_radius"
+                android:bottomLeftRadius="@dimen/addalarm_radius"
+                android:topLeftRadius="@dimen/addalarm_radius"
+                android:topRightRadius="@dimen/addalarm_radius"/>
+            <solid android:color="@color/addalarm_groupLayout_On" />
+
+            <padding
+                android:bottom="8dp"
+                android:left="8dp"
+                android:right="8dp"
+                android:top="8dp" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/addalarm_groupLayout_On" />
+        </shape>
+    </item>
+</ripple>

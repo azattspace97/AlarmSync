@@ -4,4 +4,7 @@
     <dimen name="main_menu_icon_marginH">20dp</dimen>
     <dimen name="main_menu_icon_marginV">10dp</dimen>
     <dimen name="sign_radius">8dp</dimen>
+    <dimen name="addalarm_radius">40dp</dimen>
+    <dimen name="addalarm_ring">40dp</dimen>
+    <dimen name="addalarm_ringmargin">5dp</dimen>
 </resources>

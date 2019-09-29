@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@android:id/background">
+
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomRightRadius="@dimen/sign_radius"
+                android:bottomLeftRadius="@dimen/sign_radius"
+                android:topLeftRadius="@dimen/sign_radius"
+                android:topRightRadius="@dimen/sign_radius"/>
+            <solid android:color="#00ff0000" />
+
+            <padding
+                android:bottom="8dp"
+                android:left="8dp"
+                android:right="8dp"
+                android:top="8dp" />
+        </shape>
+    </item>
+
+</ripple>
