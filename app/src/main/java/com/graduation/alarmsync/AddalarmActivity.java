@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
@@ -20,9 +21,28 @@ import com.graduation.alarmsync.databinding.ActivityAddalarmBinding;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.TooManyListenersException;
 
 public class AddalarmActivity extends Activity {
     int mYear, mMonth, mDay;
+
+    public void weekbtnRegist(ToggleButton... target) {
+        for (final ToggleButton btn : target) {
+            btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b) {
+                        btn.setBackgroundResource(R.drawable.addalarm_btnweek_on);
+                        btn.setTextColor(getColor(R.color.red));
+                    }
+                    else {
+                        btn.setBackgroundResource(R.drawable.addalarm_btnweek_off);
+                        btn.setTextColor(getColor(R.color.white));
+                    }
+                }
+            });
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +69,9 @@ public class AddalarmActivity extends Activity {
             }
         });
 
+
+        weekbtnRegist(binding.btnSun, binding.btnMon, binding.btnTue, binding.btnWen, binding.btnThu, binding.btnFri, binding.btnSat);
+
         final DatePickerDialog.OnDateSetListener mDateSetListener =
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -56,6 +79,9 @@ public class AddalarmActivity extends Activity {
                         mYear = year;
                         mMonth = monthOfYear;
                         mDay = dayOfMonth;
+
+                        int tempMonth = monthOfYear + 1;
+                        binding.tvday.setText(tempMonth + "월 " + mDay + "일");
                     }
                 };
 
@@ -113,8 +139,6 @@ public class AddalarmActivity extends Activity {
 
                                           }
                                       });
-
-
 
 /*
         this.context = this;

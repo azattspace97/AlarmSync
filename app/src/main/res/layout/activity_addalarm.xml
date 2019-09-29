@@ -109,6 +109,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/groupLayout"
@@ -120,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_alignParentLeft="true"
-                android:text="내일-9월 30일 (월)"
+                android:text="9월 30일 (월)"
                 android:textSize="20dp"
                 />
 
@@ -141,48 +142,69 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
-                <Button
+                <ToggleButton
+                    android:id="@+id/btnSun"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="일"/>
-                <Button
+                    android:textOn="일"
+                    android:textOff="일"
+                    />
+                <ToggleButton
+                    android:id="@+id/btnMon"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="월"/>
-                <Button
+                    android:textOn="월"
+                    android:textOff="월"
+                    />
+                <ToggleButton
+                    android:id="@+id/btnTue"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="화"/>
-                <Button
+                    android:textOn="화"
+                    android:textOff="화"
+                    />
+                <ToggleButton
+                    android:id="@+id/btnWen"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="수"/>
-                <Button
+                    android:textOn="수"
+                    android:textOff="수"
+                    />
+                <ToggleButton
+                    android:id="@+id/btnThu"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="목"/>
-                <Button
+                    android:textOn="목"
+                    android:textOff="목"
+                    />
+                <ToggleButton
+                    android:id="@+id/btnFri"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="금"/>
-                <Button
+                    android:textOn="금"
+                    android:textOff="금"
+                    />
+                <ToggleButton
+                    android:id="@+id/btnSat"
                     android:layout_width="@dimen/addalarm_ring"
                     android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek"
+                    android:background="@drawable/addalarm_btnweek_off"
                     android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
-                    android:text="토"/>
+                    android:textOn="토"
+                    android:textOff="토"
+                    />
             </LinearLayout>
 
 
