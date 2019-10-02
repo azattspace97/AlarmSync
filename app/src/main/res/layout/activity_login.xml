@@ -9,53 +9,32 @@
         >
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textColor="@color/white"
             android:id="@+id/edt_email"
-            android:layout_centerHorizontal="true"
             android:hint="Email Address"
             android:drawableLeft="@mipmap/login_icon3"
-            android:drawablePadding="15dp"
-            android:background="@drawable/login_edit"
+            style="@style/login_edittext"
             android:layout_marginTop="151dp" />
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textColor="@color/white"
             android:id="@+id/edit_pwd"
-            android:layout_centerHorizontal="true"
             android:hint="Password"
             android:drawableLeft="@mipmap/login_icon2"
-            android:drawablePadding="15dp"
-            android:background="@drawable/login_edit"
             android:layout_marginTop="15dp"
+            style="@style/login_edittext"
             android:layout_below="@+id/edt_email" />
 
-
         <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
+            style="@style/login_btn"
             android:text="Log in"
-            android:textColor="@color/white"
             android:id="@+id/btn_login"
-            android:textAllCaps="false"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/login_btn"
             android:layout_below="@+id/edit_pwd" />
 
         <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
+            style="@style/login_btn"
             android:text="Sign up"
-            android:textColor="@color/white"
             android:layout_marginTop="60dp"
             android:id="@+id/btn_sign"
-            android:textAllCaps="false"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/login_btn"
             android:layout_alignTop="@+id/btn_login"/>
 
         <CheckBox

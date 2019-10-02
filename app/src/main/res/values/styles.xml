@@ -6,4 +6,71 @@
         <!-- <item name="main_alarmClickEffect">#FFFFFF</item> -->
     </style>
 
+    <style name="main_btnmenu">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:layout_marginVertical">10dp</item>
+    </style>
+
+    <style name="addalarm_btnweek">
+        <item name="android:layout_width">@dimen/addalarm_ring</item>
+        <item name="android:layout_height">@dimen/addalarm_ring</item>
+        <item name="android:background">@drawable/addalarm_btnweek_off</item>
+        <item name="android:layout_marginHorizontal">@dimen/addalarm_ringmargin</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="addalarm_layoutsetting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="addalarm_swbtnsetting">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_weight">2</item>
+    </style>
+
+    <style name="addalarm_btnsetting">
+        <item name="android:background">@drawable/addalarm_btnsetting</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:layout_width">220dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_weight">10</item>
+    </style>
+
+    <style name="addalarm_linewidth">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_below">@id/settingMusicLayout</item>
+        <item name="android:background">@drawable/addalarm_line</item>
+    </style>
+
+    <style name="addalarm_lineheight">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/addalarm_line</item>
+    </style>
+
+    <style name="login_edittext">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:background">@drawable/login_edit</item>
+    </style>
+
+    <style name="login_btn">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/login_btn</item>
+    </style>
+
 </resources>

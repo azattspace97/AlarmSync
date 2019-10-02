@@ -144,64 +144,43 @@
                 android:orientation="horizontal">
                 <ToggleButton
                     android:id="@+id/btnSun"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="일"
                     android:textOff="일"
                     />
                 <ToggleButton
                     android:id="@+id/btnMon"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="월"
                     android:textOff="월"
                     />
                 <ToggleButton
                     android:id="@+id/btnTue"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="화"
                     android:textOff="화"
                     />
                 <ToggleButton
                     android:id="@+id/btnWen"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="수"
                     android:textOff="수"
                     />
                 <ToggleButton
                     android:id="@+id/btnThu"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="목"
                     android:textOff="목"
                     />
                 <ToggleButton
                     android:id="@+id/btnFri"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="금"
                     android:textOff="금"
                     />
                 <ToggleButton
                     android:id="@+id/btnSat"
-                    android:layout_width="@dimen/addalarm_ring"
-                    android:layout_height="@dimen/addalarm_ring"
-                    android:background="@drawable/addalarm_btnweek_off"
-                    android:layout_marginHorizontal="@dimen/addalarm_ringmargin"
+                    style="@style/addalarm_btnweek"
                     android:textOn="토"
                     android:textOff="토"
                     />
@@ -210,90 +189,43 @@
 
             <LinearLayout
                 android:id="@+id/settingMusicLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                style="@style/addalarm_layoutsetting"
                 android:layout_marginTop="30dp"
                 android:layout_below="@+id/weekbtnLayout"
                 >
                 <Button
-                    android:background="@drawable/addalarm_btnsetting"
-                    android:gravity="left|center"
-                    android:layout_width="220dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="10"
+                    style="@style/addalarm_btnsetting"
                     android:text="알람음"/>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/addalarm_line"></View>
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="2"/>
+                <View style="@style/addalarm_lineheight"/>
+                <Switch style="@style/addalarm_swbtnsetting"/>
             </LinearLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/settingMusicLayout"
-                android:background="@drawable/addalarm_line"></View>
+            <View style="@style/addalarm_linewidth"/>
 
             <LinearLayout
                 android:id="@+id/settingVibrationLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                style="@style/addalarm_layoutsetting"
                 android:layout_below="@+id/settingMusicLayout"
                 >
                 <Button
-                    android:background="@drawable/addalarm_btnsetting"
-                    android:gravity="left|center"
-                    android:layout_width="220dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="10"
+                    style="@style/addalarm_btnsetting"
                     android:text="진동"/>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/addalarm_line"></View>
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="2"/>
+                <View style="@style/addalarm_lineheight"/>
+                <Switch style="@style/addalarm_swbtnsetting"/>
             </LinearLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/settingVibrationLayout"
-                android:background="@drawable/addalarm_line"></View>
+            <View style="@style/addalarm_linewidth"/>
 
             <LinearLayout
                 android:id="@+id/settingRemindLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                style="@style/addalarm_layoutsetting"
                 android:layout_below="@+id/settingVibrationLayout"
                 >
                 <Button
-                    android:background="@drawable/addalarm_btnsetting"
-                    android:gravity="left|center"
-                    android:layout_width="220dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="10"
+                    style="@style/addalarm_btnsetting"
                     android:text="다시울림"/>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/addalarm_line"></View>
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="2"/>
+                <View style="@style/addalarm_lineheight"/>
+                <Switch style="@style/addalarm_swbtnsetting"/>
             </LinearLayout>
 
 

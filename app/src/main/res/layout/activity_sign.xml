@@ -9,65 +9,41 @@
         >
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textColor="@color/white"
+            style="@style/login_edittext"
             android:id="@+id/edt_email"
-            android:layout_centerHorizontal="true"
             android:hint="Email Address"
             android:drawableLeft="@mipmap/login_icon3"
-            android:drawablePadding="15dp"
-            android:background="@drawable/login_edit"
             android:layout_marginTop="151dp" />
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textColor="@color/white"
+            style="@style/login_edittext"
             android:id="@+id/edit_pwd"
-            android:layout_centerHorizontal="true"
             android:hint="Password"
             android:drawableLeft="@mipmap/login_icon2"
-            android:drawablePadding="15dp"
-            android:background="@drawable/login_edit"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/edt_email" />
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textColor="@color/white"
+            style="@style/login_edittext"
             android:id="@+id/edit_pwdcheck"
-            android:layout_centerHorizontal="true"
             android:hint="Repeat Password"
             android:drawableLeft="@mipmap/login_icon1"
-            android:drawablePadding="15dp"
-            android:background="@drawable/login_edit"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/edit_pwd" />
 
 
         <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
+            style="@style/login_btn"
             android:text="Sign Up"
-            android:textColor="@color/white"
             android:id="@+id/btn_signup"
-            android:textAllCaps="false"
             android:layout_marginTop="40dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/login_btn"
             android:layout_below="@+id/edit_pwdcheck" />
 
         <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
+            style="@style/login_btn"
             android:text="돌아가기"
-            android:textColor="@color/white"
             android:layout_marginTop="70dp"
             android:id="@+id/btn_return"
-            android:textAllCaps="false"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/login_btn"
             android:layout_alignTop="@+id/btn_signup"/>
 
