@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_alignParentLeft="true"
-                android:text="9월 30일 (월)"
+                android:text="9월 30일"
                 android:textSize="20dp"
                 />
 
@@ -200,7 +200,10 @@
                 <Switch style="@style/addalarm_swbtnsetting"/>
             </LinearLayout>
 
-            <View style="@style/addalarm_linewidth"/>
+            <View
+                style="@style/addalarm_linewidth"
+                android:layout_below="@id/settingMusicLayout"
+                />
 
             <LinearLayout
                 android:id="@+id/settingVibrationLayout"
@@ -214,7 +217,10 @@
                 <Switch style="@style/addalarm_swbtnsetting"/>
             </LinearLayout>
 
-            <View style="@style/addalarm_linewidth"/>
+            <View
+                style="@style/addalarm_linewidth"
+                android:layout_below="@id/settingVibrationLayout"
+                />
 
             <LinearLayout
                 android:id="@+id/settingRemindLayout"
@@ -227,8 +233,6 @@
                 <View style="@style/addalarm_lineheight"/>
                 <Switch style="@style/addalarm_swbtnsetting"/>
             </LinearLayout>
-
-
 
         </RelativeLayout>
 

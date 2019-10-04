@@ -17,6 +17,7 @@ import com.graduation.alarmsync.dbadmin.DatabaseContract;
 public class ListalarmActivity extends Activity {
     private SQLiteDatabase db;
     private Cursor cursor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,46 +26,37 @@ public class ListalarmActivity extends Activity {
         db = MainActivity.dbHelper.getReadableDatabase();
         cursor = db.rawQuery(DatabaseContract.SQL_SELECT_SORT, null);
 
-        if(cursor.moveToFirst()) {
-            String time = cursor.getString(0);
-            int daysofweek = cursor.getInt(1);
-            int enabled = cursor.getInt(2);
-            int vibrate = cursor.getInt(3);
-            String message = cursor.getString(4);
-            String alert = cursor.getString(5);
+        String type = getIntent().getStringExtra("type");
 
-            String testmsg = String.format("time=%s, daysofweek=%d, enabled=%d, vibrate=%d, message=%s, alert=%s", time, daysofweek, enabled, vibrate, message, alert);
+        if (type != null && !type.isEmpty() && type.equals("update")) {
+            int len = cursor.getCount();
 
-            binding.test2.setText("테스트입니다.");
+            cursor.moveToFirst();
+            for(int i = 0; i < len; i++) {
+                String time = cursor.getString(0);
+                int daysofweek = cursor.getInt(1);
+                int enabled = cursor.getInt(2);
+                int vibrate = cursor.getInt(3);
+                String message = cursor.getString(4);
+                String alert = cursor.getString(5);
 
-            InitAlarmList(binding.testlayout);
+                String testmsg = String.format("time=%s, daysofweek=%d, enabled=%d, vibrate=%d, message=%s, alert=%s", time, daysofweek, enabled, vibrate, message, alert);
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                final Button btn = new Button(this);
+                btn.setId(i);
+                btn.setLayoutParams(params);
+                btn.setText(testmsg);
+                binding.testlayout.addView(btn);
+                cursor.moveToNext();
+            }
+            setResult(RESULT_OK);
         }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-    }
-
-    private void InitAlarmList(LinearLayout ll) {
-        int len = cursor.getCount();
-
-        cursor.moveToFirst();
-        for(int i = 0; i < len; i++) {
-            String time = cursor.getString(0);
-            int daysofweek = cursor.getInt(1);
-            int enabled = cursor.getInt(2);
-            int vibrate = cursor.getInt(3);
-            String message = cursor.getString(4);
-            String alert = cursor.getString(5);
-
-            String testmsg = String.format("time=%s, daysofweek=%d, enabled=%d, vibrate=%d, message=%s, alert=%s", time, daysofweek, enabled, vibrate, message, alert);
-
-            Button btn = new Button(this.getApplicationContext());
-            btn.setText(time);
-            Log.d("tag", "msg : " + time);
-            ll.addView(btn);
-            cursor.moveToNext();
-        }
     }
 }

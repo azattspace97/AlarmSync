@@ -15,7 +15,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -23,7 +22,8 @@
         <activity android:name=".SignActivity" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".AddalarmActivity" />
-        <activity android:name=".ListalarmActivity" />
+        <activity android:name=".ListalarmActivity"
+            android:parentActivityName=".MainActivity"/>
         <receiver android:name=".Alarm_Receiver">
             <intent-filter>
                 <action android:name="com.graduation.alarmsync.ALARM_START" />

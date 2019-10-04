@@ -1,5 +1,6 @@
 package com.graduation.alarmsync;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.graduation.alarmsync.databinding.ActivityMainBinding;
 import com.graduation.alarmsync.dbadmin.DatabaseHelper;
@@ -35,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddalarmActivity.class);
-                startActivity(intent);
+                // startActivity(intent);
+                startActivityForResult(intent, 123);
             }
         });
 
@@ -62,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 binding.layoutMain.openDrawer(binding.drawer);
             }
         });
-
-
     }
 
     @Override
@@ -72,4 +73,24 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_OK) {
+            // Toast.makeText(MainActivity.this, "결과가 성공이 아님.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (requestCode == 123) {
+            // Toast.makeText(MainActivity.this, "알람추가 성공.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, ListalarmActivity.class);
+            intent.putExtra("type", "update");
+            startActivityForResult(intent, 456);
+        }
+
+        else if(requestCode == 456) {
+            // Toast.makeText(MainActivity.this, "버튼추가 성공.", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
