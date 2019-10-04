@@ -3,6 +3,7 @@
     package="com.graduation.alarmsync">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,14 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            />
-        <activity android:name=".SignActivity"
-            />
-        <activity android:name=".LoadingActivity"
-            />
-        <activity android:name=".AddalarmActivity"
-            />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignActivity" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".AddalarmActivity" />
+        <activity android:name=".ListalarmActivity" />
         <receiver android:name=".Alarm_Receiver">
             <intent-filter>
                 <action android:name="com.graduation.alarmsync.ALARM_START" />

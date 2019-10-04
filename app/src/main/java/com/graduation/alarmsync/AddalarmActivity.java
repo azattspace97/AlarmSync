@@ -6,8 +6,10 @@ import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -18,13 +20,40 @@ import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 
 import com.graduation.alarmsync.databinding.ActivityAddalarmBinding;
+import com.graduation.alarmsync.dbadmin.DatabaseContract;
+import com.graduation.alarmsync.dbadmin.DatabaseHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.TooManyListenersException;
+
 
 public class AddalarmActivity extends Activity {
     int mYear, mMonth, mDay;
+
+    private void InsertAlarmDB(String t, int d, int e, int v, String m, String a) {
+        DatabaseHelper dbHelper = MainActivity.dbHelper;
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        // db.execSQL(DatabaseContract.SQL_DELETE); 여기서 삭제해서 안된듯
+        String time = t;
+        int daysofweek = d;
+        int enabled = e;
+        int vibrate = v;
+        String message = m;
+        String alert = a;
+
+        String sqlInsert = DatabaseContract.SQL_INSERT +
+                " (" +
+                "'" + time + "', " +
+                Integer.toString(daysofweek) + ", " +
+                Integer.toString(enabled) + ", " +
+                Integer.toString(vibrate) + ", " +
+                "'" + message + "', " +
+                "'" + alert + "')";
+
+        Log.d("SQL Insert", "InsertAlarmDB: " + sqlInsert);
+        db.execSQL(sqlInsert);
+    }
 
     public void weekbtnRegist(ToggleButton... target) {
         for (final ToggleButton btn : target) {
@@ -33,11 +62,13 @@ public class AddalarmActivity extends Activity {
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (b) {
                         btn.setBackgroundResource(R.drawable.addalarm_btnweek_on);
-                        btn.setTextColor(getColor(R.color.red));
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)   // 빨간줄 뜨는게 꼴보기 싫어서 넣음
+                            btn.setTextColor(getColor(R.color.red));
                     }
                     else {
                         btn.setBackgroundResource(R.drawable.addalarm_btnweek_off);
-                        btn.setTextColor(getColor(R.color.white));
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
+                            btn.setTextColor(getColor(R.color.white));
                     }
                 }
             });
@@ -69,7 +100,6 @@ public class AddalarmActivity extends Activity {
             }
         });
 
-
         weekbtnRegist(binding.btnSun, binding.btnMon, binding.btnTue, binding.btnWen, binding.btnThu, binding.btnFri, binding.btnSat);
 
         final DatePickerDialog.OnDateSetListener mDateSetListener =
@@ -97,14 +127,20 @@ public class AddalarmActivity extends Activity {
             }
         });
 
-
-
         binding.ok.setOnClickListener(new View.OnClickListener() {
                                           @RequiresApi(api = Build.VERSION_CODES.M)
                                           @Override
                                           public void onClick(View v) {
-                                              Calendar cal = Calendar.getInstance();
+                                              AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+                                              Intent mintent = new Intent(AddalarmActivity.this, Alarm_Receiver.class);
+                                              //Intent mintent = new Intent(ALARM_ALERT_ACTION);
+                                              // my_intent.putExtra("state","alarm on");
+
+                                              PendingIntent mpending = PendingIntent.getBroadcast(
+                                                              getApplicationContext(), 0, mintent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                                              Calendar cal = Calendar.getInstance();
                                               if(mYear != 0) {
                                                   cal.set(Calendar.YEAR, mYear);
                                                   cal.set(Calendar.MONTH, mMonth);
@@ -114,62 +150,17 @@ public class AddalarmActivity extends Activity {
                                               cal.set(Calendar.MINUTE, binding.tp.getMinute());
                                               cal.set(Calendar.SECOND, 0);
 
-                                              Intent mintent = new Intent(AddalarmActivity.this, Alarm_Receiver.class);
-
-                                              PendingIntent mpending =
-                                                      PendingIntent.getBroadcast(
-                                                              AddalarmActivity.this,
-                                                              //requestCode,
-                                                              0,
-                                                              mintent,
-                                                              PendingIntent.FLAG_UPDATE_CURRENT
-                                                      );
-
-                                              AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                                              malarm.set(
-                                                      AlarmManager.RTC_WAKEUP,
-                                                      cal.getTimeInMillis(),
-                                                      mpending
-                                              );
+                                              malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
 
                                               int month = cal.get(Calendar.MONTH) + 1;
                                               Toast.makeText(AddalarmActivity .this,"Alarm 예정 " + cal.get(Calendar.YEAR) + "년 " + month + "월"
                                                       + cal.get(Calendar.DAY_OF_MONTH) + "일" + cal.get(Calendar.HOUR_OF_DAY)
                                                       + "시 " + cal.get(Calendar.MINUTE) + "분",Toast.LENGTH_SHORT).show();
 
+                                              SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+                                              String time = format.format(cal.getTime());
+                                              InsertAlarmDB(time, 0, 0, 0, "test", "test");
                                           }
                                       });
-
-/*
-        this.context = this;
-        alarm_manager = (AlarmManager)getSystemService(ALARM_SERVICE);
-
-        final Calendar calendar = Calendar.getInstance();
-
-        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
-
-        binding.ok.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                calendar.set(Calendar.HOUR_OF_DAY, binding.tp.getHour());
-                calendar.set(Calendar.MINUTE, binding.tp.getMinute());
-                calendar.set(Calendar.SECOND, 0);
-
-                int hour = binding.tp.getHour();
-                int minute = binding.tp.getMinute();
-                Toast.makeText(AddalarmActivity .this,"Alarm 예정 " + hour + "시 " + minute + "분",Toast.LENGTH_SHORT).show();
-
-                my_intent.putExtra("state","alarm on");
-
-                pendingIntent = PendingIntent.getBroadcast(AddalarmActivity.this, 0, my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                // 알람셋팅
-                alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-
-            }
-        });
-*/
     }
-
 }

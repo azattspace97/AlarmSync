@@ -107,6 +107,7 @@
                 <Button
                     style="@style/main_btnmenu"
                     android:background="@drawable/main_menu_alarm"
+                    android:id="@+id/main_menu_alarmlist"
                     />
 
                 <Button
