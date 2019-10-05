@@ -10,26 +10,26 @@
 
         <EditText
             style="@style/login_edittext"
-            android:id="@+id/edt_email"
+            android:id="@+id/etid"
             android:hint="Email Address"
             android:drawableLeft="@mipmap/login_icon3"
             android:layout_marginTop="151dp" />
 
         <EditText
             style="@style/login_edittext"
-            android:id="@+id/edit_pwd"
+            android:id="@+id/etpwd"
             android:hint="Password"
             android:drawableLeft="@mipmap/login_icon2"
             android:layout_marginTop="15dp"
-            android:layout_below="@+id/edt_email" />
+            android:layout_below="@+id/etid" />
 
         <EditText
             style="@style/login_edittext"
-            android:id="@+id/edit_pwdcheck"
+            android:id="@+id/etpwdcheck"
             android:hint="Repeat Password"
             android:drawableLeft="@mipmap/login_icon1"
             android:layout_marginTop="15dp"
-            android:layout_below="@+id/edit_pwd" />
+            android:layout_below="@+id/etpwd" />
 
 
         <Button
@@ -37,7 +37,7 @@
             android:text="Sign Up"
             android:id="@+id/btn_signup"
             android:layout_marginTop="40dp"
-            android:layout_below="@+id/edit_pwdcheck" />
+            android:layout_below="@+id/etpwdcheck" />
 
         <Button
             style="@style/login_btn"

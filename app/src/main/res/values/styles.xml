@@ -63,6 +63,15 @@
         <item name="android:background">@drawable/login_edit</item>
     </style>
 
+    <style name="sign_etcheck">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:background">@drawable/login_edit</item>
+    </style>
+
     <style name="login_btn">
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">55dp</item>

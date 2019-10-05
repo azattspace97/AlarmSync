@@ -9,26 +9,26 @@
         >
 
         <EditText
-            android:id="@+id/edt_email"
+            android:id="@+id/etid"
             android:hint="Email Address"
             android:drawableLeft="@mipmap/login_icon3"
             style="@style/login_edittext"
             android:layout_marginTop="151dp" />
 
         <EditText
-            android:id="@+id/edit_pwd"
+            android:id="@+id/etpwd"
             android:hint="Password"
             android:drawableLeft="@mipmap/login_icon2"
             android:layout_marginTop="15dp"
             style="@style/login_edittext"
-            android:layout_below="@+id/edt_email" />
+            android:layout_below="@+id/etid" />
 
         <Button
             style="@style/login_btn"
             android:text="Log in"
             android:id="@+id/btn_login"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/edit_pwd" />
+            android:layout_below="@+id/etpwd" />
 
         <Button
             style="@style/login_btn"
