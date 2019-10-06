@@ -29,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         */
 
-
-        // getSupportActionBar().setTitle("ACTIONBAR");
-        // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        binding.drawerRelative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         binding.btnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 binding.layoutMain.openDrawer(binding.drawer);
+            }
+        });
+
+        binding.btnDrawerlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

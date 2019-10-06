@@ -5,7 +5,8 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/layoutMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="actionbtn">
 
         <com.google.android.material.navigation.NavigationView
             android:orientation="vertical"
@@ -20,30 +21,35 @@
             -->
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_gravity="top"
-                    android:src="@mipmap/main_side_header_block"/>
+                android:id="@+id/drawerRelative"
+                android:orientation="vertical" android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:src="@mipmap/main_side_header_icon"/>
+                    android:background="#8041D9"
+                    android:layout_alignParentTop="true"
+                    />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="친구" />
-
-                <ImageView
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/btn_drawerlogin"
+                    android:layout_width="180dp"
                     android:layout_height="70dp"
-                    android:layout_gravity="bottom"
-                    android:src="@mipmap/main_side_header_block"/>
+                    android:text="Login"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:background="@drawable/main_frame_loginbtn"
+                    android:layout_centerInParent="true"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#8041D9"
+                    android:layout_alignParentBottom="true"
+                    />
             </RelativeLayout>
 
         </com.google.android.material.navigation.NavigationView>
