@@ -15,6 +15,7 @@ import com.graduation.alarmsync.dbadmin.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
     public static DatabaseHelper dbHelper;
+    public Intent ListIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         dbHelper = new DatabaseHelper(this, this.getApplicationInfo().dataDir + "/alarm.db");
-
+        ListIntent = new Intent(MainActivity.this, ListalarmActivity.class);
         /*  ############### 로딩화면 뜨게 하는 코드, 나중에 주석 해제
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
@@ -45,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         binding.mainMenuAlarmlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListalarmActivity.class);
-                startActivity(intent);
+                startActivity(ListIntent);
             }
         });
 
@@ -84,9 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 123) {
             // Toast.makeText(MainActivity.this, "알람추가 성공.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, ListalarmActivity.class);
-            intent.putExtra("type", "update");
-            startActivityForResult(intent, 456);
+            ListIntent.putExtra("type", "update");
+            startActivityForResult(ListIntent, 456);
         }
 
         else if(requestCode == 456) {

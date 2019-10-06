@@ -1,6 +1,7 @@
 package com.graduation.alarmsync;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,9 +9,11 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.graduation.alarmsync.connadmin.LoginSignTask;
 import com.graduation.alarmsync.databinding.ActivitySignBinding;
 
 public class SignActivity extends Activity {
@@ -27,6 +30,29 @@ public class SignActivity extends Activity {
             public void onClick(View view) {
                 String id = binding.etid.getText().toString();
                 String pwd = binding.etpwd.getText().toString();
+
+                if(!pwd.equals(binding.etpwdcheck.getText().toString())) {
+                    Toast.makeText(SignActivity.this, "패스워드가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                try {
+                    String result  = new LoginSignTask().execute(id,pwd,"sign").get();
+
+                    if(result.equals("ok")) {
+                        Toast.makeText(SignActivity.this,"회원가입이 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else if(result.equals("overlap")) {
+                        Toast.makeText(SignActivity.this,"이미 존재하는 아이디 입니다.",Toast.LENGTH_SHORT).show();
+                        binding.etid.setText("");
+                        binding.etpwd.setText("");
+                    } else {
+                        Toast.makeText(SignActivity.this,"네트워크에 문제가 생기거나 사이트가 접속이 되지 않습니다..",Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {}
             }
         });
 
