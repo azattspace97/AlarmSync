@@ -26,7 +26,6 @@ import com.graduation.alarmsync.dbadmin.DatabaseHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -58,7 +57,6 @@ public class AddalarmActivity extends Activity {
                             mYear = calendar.get(Calendar.YEAR);
                             mMonth = calendar.get(Calendar.MONTH);
                             mDay = calendar.get(Calendar.DAY_OF_MONTH);
-
                             String getTime = (mMonth+1) + "월 " + mDay + "일";
                             tv.setText(getTime);
                         }

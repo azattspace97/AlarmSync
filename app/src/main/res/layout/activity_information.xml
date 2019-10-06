@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/drawerRelative"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#8041D9"
+            android:layout_alignParentTop="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivicon"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:src="@mipmap/main_side_header_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/tvmyinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="여기에 자기정보뜨게하기"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_toRightOf="@+id/ivicon"
+            />
+
+        <Button
+            android:id="@+id/btn_drawerlogin"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_marginTop="30dp"
+            android:background="#8041D9"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/tvfreind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="친구"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/ivicon"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_marginTop="5dp"
+            style="@style/addalarm_linewidth"
+            android:layout_below="@+id/tvfreind"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#8041D9"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+</layout>

@@ -2,137 +2,83 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/layoutMain"
+    <LinearLayout
+        android:id="@+id/layoutAlarm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="actionbtn">
-
-        <com.google.android.material.navigation.NavigationView
-            android:orientation="vertical"
-            android:layout_width="280dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:background="#FFFFFF"
-            android:id="@+id/drawer">
-            <!--
-            app:headerLayout="@menu/main_setting_header"
-            아래쪽은 RelativeLayout으로 감싸서 DB에서 친구목록 불러와서 Image,btn 식으로 뿌려주기.
-            -->
-
-            <RelativeLayout
-                android:id="@+id/drawerRelative"
-                android:orientation="vertical" android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="#8041D9"
-                    android:layout_alignParentTop="true"
-                    />
-
-                <Button
-                    android:id="@+id/btn_drawerlogin"
-                    android:layout_width="180dp"
-                    android:layout_height="70dp"
-                    android:text="Login"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:background="@drawable/main_frame_loginbtn"
-                    android:layout_centerInParent="true"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="#8041D9"
-                    android:layout_alignParentBottom="true"
-                    />
-            </RelativeLayout>
-
-        </com.google.android.material.navigation.NavigationView>
-
-
+        android:orientation="vertical"
+        android:background="@mipmap/main_background"
+        tools:context=".MainActivity">
+    <!--- 액션바 추가하기 -->
         <LinearLayout
-            android:id="@+id/layoutAlarm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@mipmap/main_background"
-            tools:context=".MainActivity">
-        <!--- 액션바 추가하기 -->
-            <LinearLayout
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnAlarm"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnAlarm"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_margin="30dp"
-                    android:background="@drawable/main_alarmwindow"
-                    android:drawableLeft="@mipmap/main_alarm_human"
-                    android:gravity="center"
-                    android:hint="알람을 추가하여 주십시오."
-                    android:text="9999년 99년 99일 99시 99분 99초\n상대방:홍길동\n내용:집으로가기"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18dp"></Button>
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btn_float"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_margin="15dp"
-                    android:src="@mipmap/main_float"
-                    app:backgroundTint="#F361A6"
-                    app:rippleColor="@color/black"
-                    app:borderWidth="10dp"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="100dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/main_alarmwindow"
+                android:drawableLeft="@mipmap/main_alarm_human"
                 android:gravity="center"
-                android:background="@mipmap/main_menu_background"
-                >
+                android:hint="알람을 추가하여 주십시오."
+                android:text="9999년 99년 99일 99시 99분 99초\n상대방:홍길동\n내용:집으로가기"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp"></Button>
 
-                <Button
-                    style="@style/main_btnmenu"
-                    android:background="@drawable/main_menu_home"
-                    />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_float"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_margin="15dp"
+                android:src="@mipmap/main_float"
+                app:backgroundTint="#F361A6"
+                app:rippleColor="@color/black"
+                app:borderWidth="10dp"
+                />
 
-                <Button
-                    style="@style/main_btnmenu"
-                    android:background="@drawable/main_menu_alarm"
-                    android:id="@+id/main_menu_alarmlist"
-                    />
-
-                <Button
-                    style="@style/main_btnmenu"
-                    android:background="@drawable/main_menu_group"
-                    />
-
-                <Button
-                    style="@style/main_btnmenu"
-                    android:background="@drawable/main_menu_info"
-                    android:id="@+id/main_menu_info"
-                    />
-
-                <Button
-                    style="@style/main_btnmenu"
-                    android:background="@drawable/main_menu_setting"
-                    android:id="@+id/main_setting"
-                    />
-            </LinearLayout>
         </LinearLayout>
-    </androidx.drawerlayout.widget.DrawerLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@mipmap/main_menu_background"
+            >
+
+            <Button
+                style="@style/main_btnmenu"
+                android:background="@drawable/main_menu_home"
+                />
+
+            <Button
+                style="@style/main_btnmenu"
+                android:background="@drawable/main_menu_alarm"
+                android:id="@+id/main_menu_alarmlist"
+                />
+
+            <Button
+                style="@style/main_btnmenu"
+                android:background="@drawable/main_menu_group"
+                />
+
+            <Button
+                style="@style/main_btnmenu"
+                android:background="@drawable/main_menu_info"
+                android:id="@+id/main_menu_info"
+                />
+
+            <Button
+                style="@style/main_btnmenu"
+                android:background="@drawable/main_menu_setting"
+                android:id="@+id/main_setting"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </layout>

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 import com.graduation.alarmsync.databinding.ActivityMainBinding;
 import com.graduation.alarmsync.dbadmin.DatabaseHelper;
@@ -16,6 +15,9 @@ import com.graduation.alarmsync.dbadmin.DatabaseHelper;
 public class MainActivity extends AppCompatActivity {
     public static DatabaseHelper dbHelper;
     public Intent ListIntent;
+    private boolean LoginCheck = false;
+    private String id = "";
+    private String pwd = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +30,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
         */
-
-        binding.drawerRelative.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         binding.btnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,23 +51,20 @@ public class MainActivity extends AppCompatActivity {
             // 로그인이 되어있는지 체크하고 로그인 페이지를 실행할것
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+                if(!LoginCheck) {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivityForResult(intent, 111);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, InformationActivity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                }
             }
         });
-
         binding.mainSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.layoutMain.openDrawer(binding.drawer);
-            }
-        });
 
-        binding.btnDrawerlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
             }
         });
     }
@@ -92,12 +84,17 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (requestCode == 123) {
+        if(requestCode == 111) {
+            id = data.getStringExtra("id");
+            pwd = data.getStringExtra("pwd");
+
+            LoginCheck = true;
+        }
+        else if (requestCode == 123) {
             // Toast.makeText(MainActivity.this, "알람추가 성공.", Toast.LENGTH_SHORT).show();
             ListIntent.putExtra("type", "update");
             startActivityForResult(ListIntent, 456);
         }
-
         else if(requestCode == 456) {
             // Toast.makeText(MainActivity.this, "버튼추가 성공.", Toast.LENGTH_SHORT).show();
         }

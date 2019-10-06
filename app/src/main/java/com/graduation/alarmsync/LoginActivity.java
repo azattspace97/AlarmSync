@@ -37,8 +37,10 @@ public class LoginActivity extends Activity {
                     String result  = new LoginSignTask().execute(id,pwd,"login").get();
                     if(result.equals("ok")) {
                         Toast.makeText(LoginActivity.this,"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        Intent idpwdIntent = new Intent();
+                        idpwdIntent.putExtra("id", id);
+                        idpwdIntent.putExtra("pwd", pwd);
+                        setResult(RESULT_OK, idpwdIntent);
                         finish();
                     } else if(result.equals("false")) {
                         Toast.makeText(LoginActivity.this,"아이디 또는 비밀번호가 틀리거나 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
