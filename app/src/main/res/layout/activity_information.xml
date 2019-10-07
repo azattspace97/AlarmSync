@@ -22,25 +22,49 @@
             />
 
         <TextView
-            android:id="@+id/tvmyinfo"
+            android:id="@+id/tvmyid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:text="여기에 자기정보뜨게하기"
+            android:text="id"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/ivicon"
+            />
+        <TextView
+            android:id="@+id/tvmynickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvmyid"
+            android:layout_marginLeft="10dp"
+            android:text="nickname"
+            android:textColor="@color/white"
+            android:textSize="20dp"
             android:layout_toRightOf="@+id/ivicon"
             />
 
         <Button
-            android:id="@+id/btn_drawerlogin"
-            android:layout_width="90dp"
-            android:layout_height="35dp"
+            android:id="@+id/btn_modify"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="정보수정"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"
+            android:background="#8041D9"
+            android:layout_alignParentRight="true"
+            />
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:text="Logout"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:background="#8041D9"
             android:layout_alignParentRight="true"
             />

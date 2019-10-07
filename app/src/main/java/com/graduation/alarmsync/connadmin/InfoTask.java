@@ -11,18 +11,19 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LoginSignTask extends AsyncTask<String, Void, String> {
+public class InfoTask extends AsyncTask<String, Void, String> {
     private String sendMsg, receiveMsg;
+
     @Override
     protected String doInBackground(String... strings) {
         try {
             String str;
-            URL url = new URL("http://azattspace97.ddns.net:13580/index.jsp");
+            URL url = new URL("http://azattspace97.ddns.net:13580/info.jsp");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestMethod("POST");
             OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-            sendMsg = "id="+strings[0]+"&pwd="+strings[1]+"&type="+strings[2];
+            sendMsg = "id="+strings[0]+"&pwd="+strings[1];
             osw.write(sendMsg);
             osw.flush();
             if(conn.getResponseCode() == conn.HTTP_OK) {
@@ -33,15 +34,17 @@ public class LoginSignTask extends AsyncTask<String, Void, String> {
                     buffer.append(str);
                 }
                 receiveMsg = buffer.toString();
-
             } else {
                 Log.i("통신 결과", conn.getResponseCode()+"에러");
+                receiveMsg = "false";
             }
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            receiveMsg = "false";
         } catch (IOException e) {
             e.printStackTrace();
+            receiveMsg = "false";
         }
         return receiveMsg;
     }

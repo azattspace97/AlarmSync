@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean LoginCheck = false;
     private String id = "";
     private String pwd = "";
+    private String nickname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(MainActivity.this, InformationActivity.class);
                     intent.putExtra("id", id);
+                    intent.putExtra("pwd", pwd);
                     startActivity(intent);
                 }
             }
