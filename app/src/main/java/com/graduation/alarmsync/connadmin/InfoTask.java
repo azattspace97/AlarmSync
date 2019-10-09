@@ -18,12 +18,23 @@ public class InfoTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         try {
             String str;
-            URL url = new URL("http://azattspace97.ddns.net:13580/info.jsp");
+            URL url;
+            if(strings[0].equals("info")) {
+                url = new URL("http://azattspace97.ddns.net:13580/info.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2];
+            }
+            else if(strings[0].equals("nick")) {
+                url = new URL("http://azattspace97.ddns.net:13580/nick.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&nickname=" + strings[3];
+            }
+            else return "false";
+
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestMethod("POST");
             OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-            sendMsg = "id="+strings[0]+"&pwd="+strings[1];
+
+            // sendMsg = "id="+strings[0]+"&pwd="+strings[1];
             osw.write(sendMsg);
             osw.flush();
             if(conn.getResponseCode() == conn.HTTP_OK) {
@@ -38,7 +49,6 @@ public class InfoTask extends AsyncTask<String, Void, String> {
                 Log.i("통신 결과", conn.getResponseCode()+"에러");
                 receiveMsg = "false";
             }
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
             receiveMsg = "false";
