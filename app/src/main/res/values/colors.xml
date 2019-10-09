@@ -5,4 +5,5 @@
     <color name="red">#FF0000</color>
     <color name="addalarm_groupLayout_On">#A566FF</color>
     <color name="addalarm_groupLayout_Off">#8C8C8C</color>
+    <color name="headerbottomblock">#8041D9</color>
 </resources>

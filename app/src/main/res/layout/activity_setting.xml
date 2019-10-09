@@ -6,10 +6,7 @@
         >
         <View
             android:id="@+id/viewheader"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#8041D9"
-            android:layout_alignParentTop="true"
+            style="@style/headerblock"
             />
 
         <TextView
@@ -57,18 +54,9 @@
             android:gravity="center_vertical|left"
             />
 
-
-
-
-
-
-
         <View
             android:id="@+id/linebottom"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#8041D9"
-            android:layout_alignParentBottom="true"
+            style="@style/bottomblock"
             />
 
 

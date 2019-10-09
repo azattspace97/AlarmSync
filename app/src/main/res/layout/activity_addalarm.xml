@@ -188,10 +188,23 @@
 
 
             <LinearLayout
-                android:id="@+id/settingMusicLayout"
+                android:id="@+id/settingNameLayout"
                 style="@style/addalarm_layoutsetting"
                 android:layout_marginTop="30dp"
                 android:layout_below="@+id/weekbtnLayout"
+                >
+                <EditText
+                    android:id="@+id/addalarm_etalarmname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="알람 내용을 입력하세요."
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/settingMusicLayout"
+                style="@style/addalarm_layoutsetting"
+                android:layout_below="@+id/settingNameLayout"
                 >
                 <Button
                     style="@style/addalarm_btnsetting"

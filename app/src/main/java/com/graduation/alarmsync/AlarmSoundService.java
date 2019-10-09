@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -18,11 +19,13 @@ import static androidx.core.app.NotificationCompat.PRIORITY_MIN;
 
 public class AlarmSoundService extends Service {
     MediaPlayer md;
+    String ID;
     public AlarmSoundService() {}
 
     private void startServiceOreoCondition(Intent intent){
         if (Build.VERSION.SDK_INT >= 26) {
             String CHANNEL_ID = intent.getStringExtra("id");
+            ID = CHANNEL_ID;
             String CHANNEL_NAME = intent.getStringExtra("id");
 
             Intent tabIntent = new Intent(this, ListalarmActivity.class);
@@ -41,6 +44,7 @@ public class AlarmSoundService extends Service {
                     .setContentText(intent.getStringExtra("message"))
                     .setContentIntent(pi)
                     .setPriority(PRIORITY_MIN).build();
+            notification.flags = Notification.FLAG_AUTO_CANCEL;
 
             startForeground(Integer.parseInt(CHANNEL_ID), notification);
         }
@@ -60,20 +64,8 @@ public class AlarmSoundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         md = MediaPlayer.create(this, R.raw.test);
         md.start();
-
+        Log.d("test", "test:onStartCommand()");
         startServiceOreoCondition(intent);
-        /*
-        if (Build.VERSION.SDK_INT >= 26) {
-            String CHANNEL_ID = intent.getStringExtra("id");
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
-                    "MyApp", NotificationManager.IMPORTANCE_DEFAULT);
-            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
-            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setContentTitle("타이틀test")
-                    .setContentText(intent.getStringExtra("message")).build();
-            startForeground(Integer.parseInt(intent.getStringExtra("id")), notification);
-        }
-        */
         return START_NOT_STICKY;
     }
 
@@ -81,5 +73,7 @@ public class AlarmSoundService extends Service {
     public void onDestroy() {
         super.onDestroy();
         md.stop();
+        if (Build.VERSION.SDK_INT >= 26)
+            stopForeground(Integer.parseInt(ID));
     }
 }

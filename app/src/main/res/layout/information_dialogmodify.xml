@@ -9,10 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="16dp"
         android:text="변경할 닉네임을 입력해 주십시오."
-        android:background="#FFFFFF"/>
+        android:background="@color/headerbottomblock"/>
 
     <View
         android:layout_width="match_parent"

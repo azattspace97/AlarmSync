@@ -42,5 +42,7 @@ public class InformationActivity extends Activity {
                 infor.callFunction(binding.tvmynickname, id, pwd);
             }
         });
+
+
     }
 }

@@ -140,8 +140,10 @@ public class AddalarmActivity extends Activity {
                                               SimpleDateFormat recode = new SimpleDateFormat("MMddHHmm");
                                               String time = timeformat.format(cal.getTime());
                                               String code = recode.format(cal.getTime());
+                                              String msg = binding.addalarmEtalarmname.getText().toString();
+                                              if(msg.isEmpty()) msg = "알람입니다.";
                                               mintent.putExtra("id", code);
-                                              mintent.putExtra("message", "testMsg");
+                                              mintent.putExtra("message", msg);
 
                                               PendingIntent mpending = PendingIntent.getBroadcast(
                                                       getApplicationContext(), Integer.parseInt(code), mintent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -153,7 +155,7 @@ public class AddalarmActivity extends Activity {
                                                       + cal.get(Calendar.DAY_OF_MONTH) + "일" + cal.get(Calendar.HOUR_OF_DAY)
                                                       + "시 " + cal.get(Calendar.MINUTE) + "분",Toast.LENGTH_SHORT).show();
 
-                                              InsertAlarmDB(time, 0, 0, 0, "test", "test");
+                                              InsertAlarmDB(time, 0, 0, 0, msg, "test");
 
                                               setResult(RESULT_OK);
                                               finish();

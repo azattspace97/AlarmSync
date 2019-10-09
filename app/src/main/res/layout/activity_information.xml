@@ -6,10 +6,7 @@
         android:layout_height="match_parent">
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#8041D9"
-            android:layout_alignParentTop="true"
+            style="@style/headerblock"
             />
 
         <ImageView
@@ -88,6 +85,17 @@
             />
 
         <Button
+            android:id="@+id/btn_applyfriends"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/information_apply"
+            android:layout_alignLeft="@+id/linebottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <Button
             android:id="@+id/btn_addfriends"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -100,10 +108,7 @@
 
         <View
             android:id="@+id/linebottom"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#8041D9"
-            android:layout_alignParentBottom="true"
+            style="@style/bottomblock"
             />
     </RelativeLayout>
 </layout>

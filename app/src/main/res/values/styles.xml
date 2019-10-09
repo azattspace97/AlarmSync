@@ -6,6 +6,20 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="headerblock">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:background">@color/headerbottomblock</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+
+    <style name="bottomblock">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:background">@color/headerbottomblock</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
     <style name="main_btnmenu">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
@@ -52,6 +66,17 @@
         <item name="android:layout_height">30dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:background">@drawable/addalarm_line</item>
+    </style>
+
+    <style name="listalarm_alarm">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:background">@drawable/main_alarmwindow</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18dp</item>
     </style>
 
     <style name="login_edittext">
