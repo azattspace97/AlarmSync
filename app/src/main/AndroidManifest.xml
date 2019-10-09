@@ -23,6 +23,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignActivity" />
         <activity android:name=".InformationActivity" />
+        <activity android:name=".SettingActivity" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".AddalarmActivity" />
         <activity android:name=".ListalarmActivity"

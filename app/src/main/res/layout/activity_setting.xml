@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <View
+            android:id="@+id/viewheader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#8041D9"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:id="@+id/tvsettitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewheader"
+            android:text="설정"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_marginTop="5dp"
+            style="@style/addalarm_linewidth"
+            android:layout_below="@+id/tvsettitle"
+            />
+
+        <Button
+            android:id="@+id/btn_notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="공지사항"
+            android:background="#FFFFFF"
+            android:layout_below="@+id/line1"
+            android:gravity="center_vertical|left"
+            />
+
+        <View
+            android:id="@+id/line2"
+            style="@style/addalarm_linewidth"
+            android:layout_below="@+id/btn_notice"
+            />
+
+        <Button
+            android:id="@+id/btn_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="버전정보 1.0.0"
+            android:background="#FFFFFF"
+            android:layout_below="@+id/line2"
+            android:gravity="center_vertical|left"
+            />
+
+
+
+
+
+
+
+        <View
+            android:id="@+id/linebottom"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#8041D9"
+            android:layout_alignParentBottom="true"
+            />
+
+
+
+    </RelativeLayout>
+</layout>

@@ -87,7 +87,19 @@
             android:layout_below="@+id/tvfreind"
             />
 
+        <Button
+            android:id="@+id/btn_addfriends"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/main_float"
+            android:layout_alignRight="@+id/linebottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            />
+
         <View
+            android:id="@+id/linebottom"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="#8041D9"
