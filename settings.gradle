@@ -1,2 +1,2 @@
-include ':app', ':android-viewbadger'
+include ':app'
 rootProject.name='AlarmSync'

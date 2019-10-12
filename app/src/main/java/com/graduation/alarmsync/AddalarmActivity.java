@@ -11,8 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -33,6 +35,10 @@ import java.util.Locale;
 public class AddalarmActivity extends Activity {
     int mYear, mMonth, mDay;
     int WeekOrDay = 0;
+    String id = "";
+    String pwd = "";
+    boolean LoginCheck = false;
+    boolean groupAlarm = false;
 
     public void weekbtnRegist(final TextView tv, final ToggleButton... target) {
         for (final ToggleButton btn : target) {
@@ -71,22 +77,30 @@ public class AddalarmActivity extends Activity {
         super.onCreate(savedInstanceState);
         final ActivityAddalarmBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_addalarm);
 
+        LoginCheck = getIntent().getBooleanExtra("login", false);
+        id = getIntent().getStringExtra("id");
+        pwd = getIntent().getStringExtra("pwd");
+
         binding.groupLayoutSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)   // 빨간줄 뜨는게 꼴보기 싫어서 넣음
-                        binding.groupLayout.setBackgroundColor(getColor(R.color.addalarm_groupLayout_On));
-                    binding.groupLayoutFriendsImage.setVisibility(View.VISIBLE);
-                    binding.groupLayoutDotdot.setVisibility(View.VISIBLE);
-                    binding.groupLayoutAddFriends.setVisibility(View.VISIBLE);
+                if(LoginCheck) {
+                    if (b) {
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)   // 빨간줄 뜨는게 꼴보기 싫어서 넣음
+                            binding.groupLayout.setBackgroundColor(getColor(R.color.addalarm_groupLayout_On));
+                        binding.groupLayoutFriendsImage.setVisibility(View.VISIBLE);
+                        binding.groupLayoutDotdot.setVisibility(View.VISIBLE);
+                        binding.groupLayoutAddFriends.setVisibility(View.VISIBLE);
+                        groupAlarm = true;
 
-                } else {
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
-                        binding.groupLayout.setBackgroundColor(getColor(R.color.addalarm_groupLayout_Off));
-                    binding.groupLayoutFriendsImage.setVisibility(View.INVISIBLE);
-                    binding.groupLayoutDotdot.setVisibility(View.INVISIBLE);
-                    binding.groupLayoutAddFriends.setVisibility(View.INVISIBLE);
+                    } else {
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
+                            binding.groupLayout.setBackgroundColor(getColor(R.color.addalarm_groupLayout_Off));
+                        binding.groupLayoutFriendsImage.setVisibility(View.INVISIBLE);
+                        binding.groupLayoutDotdot.setVisibility(View.INVISIBLE);
+                        binding.groupLayoutAddFriends.setVisibility(View.INVISIBLE);
+                        groupAlarm = false;
+                    }
                 }
             }
         });
@@ -115,6 +129,14 @@ public class AddalarmActivity extends Activity {
                 mDay = cal.get(Calendar.DAY_OF_MONTH);
                 new DatePickerDialog(AddalarmActivity.this, mDateSetListener, mYear,
                         mMonth, mDay).show();
+            }
+        });
+
+        binding.groupLayoutAddFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Addalarm_DialogAddfriend accfr = new Addalarm_DialogAddfriend(AddalarmActivity.this);
+                accfr.callFunction(binding.invisibleTextview, id, pwd);
             }
         });
 
@@ -155,7 +177,10 @@ public class AddalarmActivity extends Activity {
                                                       + cal.get(Calendar.DAY_OF_MONTH) + "일" + cal.get(Calendar.HOUR_OF_DAY)
                                                       + "시 " + cal.get(Calendar.MINUTE) + "분",Toast.LENGTH_SHORT).show();
 
-                                              InsertAlarmDB(time, 0, 0, 0, msg, "test");
+                                              if(groupAlarm) {
+
+                                              }
+                                              else InsertAlarmDB(time, 0, 0, 0, msg, "test");
 
                                               setResult(RESULT_OK);
                                               finish();

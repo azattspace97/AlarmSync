@@ -27,6 +27,22 @@ public class InfoTask extends AsyncTask<String, Void, String> {
                 url = new URL("http://azattspace97.ddns.net:13580/nick.jsp");
                 sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&nickname=" + strings[3];
             }
+            else if(strings[0].equals("query")) {
+                url = new URL("http://azattspace97.ddns.net:13580/addfriend.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&targetid=" + strings[3] + "&type=query";
+            }
+            else if(strings[0].equals("get")) {
+                url = new URL("http://azattspace97.ddns.net:13580/addfriend.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&type=get";
+            }
+            else if(strings[0].equals("getquery")) {
+                url = new URL("http://azattspace97.ddns.net:13580/addfriend.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&type=getquery";
+            }
+            else if(strings[0].equals("accept")) {
+                url = new URL("http://azattspace97.ddns.net:13580/addfriend.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&targetid=" + strings[3] + "&type=accept";
+            }
             else return "false";
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

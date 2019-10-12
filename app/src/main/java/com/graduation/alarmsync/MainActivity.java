@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddalarmActivity.class);
+                intent.putExtra("login", LoginCheck);
+                intent.putExtra("id", id);
+                intent.putExtra("pwd", pwd);
                 // startActivity(intent);
                 startActivityForResult(intent, 123);
             }

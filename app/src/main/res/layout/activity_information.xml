@@ -82,7 +82,17 @@
             android:layout_marginTop="5dp"
             style="@style/addalarm_linewidth"
             android:layout_below="@+id/tvfreind"
+            android:id="@+id/viewfriend"
             />
+
+        <LinearLayout
+            android:id="@+id/friendLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewfriend"
+            android:orientation="vertical">
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_applyfriends"
