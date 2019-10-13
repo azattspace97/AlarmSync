@@ -51,8 +51,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.mainMenuGrouplist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!LoginCheck) {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivityForResult(intent, 111);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, GroupalarmActivity.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("pwd", pwd);
+                    startActivity(intent);
+                }
+            }
+        });
+
         binding.mainMenuInfo.setOnClickListener(new View.OnClickListener() {
-            // 로그인이 되어있는지 체크하고 로그인 페이지를 실행할것
             @Override
             public void onClick(View v) {
                 if(!LoginCheck) {

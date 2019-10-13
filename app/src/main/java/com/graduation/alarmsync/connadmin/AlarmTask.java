@@ -23,9 +23,9 @@ public class AlarmTask extends AsyncTask<String, Void, String> {
                 url = new URL("http://azattspace97.ddns.net:13580/alarm.jsp");
                 sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&groupName=" + strings[3] + "&targetid=" + strings[4] + "&time=" + strings[5] + "&type=create";
             }
-            else if(strings[0].equals("nick")) {
-                url = new URL("http://azattspace97.ddns.net:13580/nick.jsp");
-                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&nickname=" + strings[3];
+            else if(strings[0].equals("get")) {
+                url = new URL("http://azattspace97.ddns.net:13580/alarm.jsp");
+                sendMsg = "id=" + strings[1] + "&pwd=" + strings[2] + "&type=get";
             }
             else return "false";
 

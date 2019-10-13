@@ -58,6 +58,10 @@ public class Addalarm_DialogAddfriend {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(etgroupName.getText().toString().isEmpty()) {
+                    Toast.makeText(context, "그룹알람의 제목을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
+                    dlg.dismiss();
+                }
                 String retmsg = etgroupName.getText().toString() + "@" + message.getText().toString();
                 intv.setText(retmsg);
                 dlg.dismiss();

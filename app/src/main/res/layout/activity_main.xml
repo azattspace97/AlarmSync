@@ -63,6 +63,7 @@
             <Button
                 style="@style/main_btnmenu"
                 android:background="@drawable/main_menu_group"
+                android:id="@+id/main_menu_grouplist"
                 />
             <Button
                 style="@style/main_btnmenu"
