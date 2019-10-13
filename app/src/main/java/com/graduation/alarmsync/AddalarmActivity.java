@@ -22,6 +22,7 @@ import android.widget.ToggleButton;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 
+import com.graduation.alarmsync.connadmin.AlarmTask;
 import com.graduation.alarmsync.databinding.ActivityAddalarmBinding;
 import com.graduation.alarmsync.dbadmin.DatabaseContract;
 import com.graduation.alarmsync.dbadmin.DatabaseHelper;
@@ -100,6 +101,7 @@ public class AddalarmActivity extends Activity {
                         binding.groupLayoutDotdot.setVisibility(View.INVISIBLE);
                         binding.groupLayoutAddFriends.setVisibility(View.INVISIBLE);
                         groupAlarm = false;
+                        binding.invisibleTextview.setText("");
                     }
                 }
             }
@@ -178,7 +180,24 @@ public class AddalarmActivity extends Activity {
                                                       + "시 " + cal.get(Calendar.MINUTE) + "분",Toast.LENGTH_SHORT).show();
 
                                               if(groupAlarm) {
+                                                  String tempList = binding.invisibleTextview.getText().toString();
+                                                  String[] tempList2 = tempList.split("@");
 
+                                                  if(tempList.isEmpty() || tempList2[1].isEmpty()) {
+                                                      Toast.makeText(getApplicationContext(), "초대한 친구가 없습니다.", Toast.LENGTH_SHORT).show();
+                                                      finish();
+                                                  }
+
+                                                  String groupName = tempList2[0];
+                                                  String[] friendList = tempList2[1].split(",");
+
+                                                  try {
+                                                      String retmsg = new AlarmTask().execute("create", id, pwd, groupName, friendList[0], time).get();
+                                                      if(retmsg.equals("ok")) {
+                                                          Log.d("test", "test:Success");
+                                                      }
+
+                                                  } catch(Exception e) {}
                                               }
                                               else InsertAlarmDB(time, 0, 0, 0, msg, "test");
 
