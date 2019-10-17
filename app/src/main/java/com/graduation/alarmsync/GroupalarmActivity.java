@@ -50,11 +50,6 @@ public class GroupalarmActivity extends Activity {
 
                 String groupName = tempAlarm.get(0);
                 String time = tempAlarm.get(1);
-                Log.d("test", "test:0="+tempAlarm.get(0));
-                Log.d("test", "test:1="+tempAlarm.get(1));
-                Log.d("test", "test:2="+tempAlarm.get(2));
-                Log.d("test", "test:2="+tempAlarm.get(3));
-
 
                 String msg = "알람제목:" + groupName + " 시간:" + time;
 
