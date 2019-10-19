@@ -19,7 +19,6 @@ import androidx.core.app.NotificationManagerCompat;
 
 public class AlarmSoundService extends Service {
     MediaPlayer md;
-    String ID;
     public AlarmSoundService() {}
 /*
     private void startServiceOreoCondition(Intent intent){
@@ -66,38 +65,21 @@ public class AlarmSoundService extends Service {
         md = MediaPlayer.create(this, R.raw.test);
         md.setLooping(true);
         md.start();
-/*
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String CHANNEL_ID = "my_channel_01";
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
-                    "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT);
 
-            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
+        builder.setSmallIcon(R.mipmap.icon);
 
-            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setContentTitle("")
-                    .setContentText("").build();
+        builder.setContentTitle(intent.getStringExtra("groupName"));
+        builder.setContentText("해당 푸시알람을 클릭하여 알람을 종료하여주십시오.");
+        builder.setOngoing(true);
+        Intent tabIntent = new Intent(this, EndalarmActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, tabIntent, 0);
+        builder.setContentIntent(pi);
 
-            startForeground(1, notification);
-        }
-        else {*/
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
-            builder.setSmallIcon(R.mipmap.icon);
-            builder.setContentTitle("테스트타이틸");
-            builder.setContentText("세부텍스트");
-            builder.setTicker("한줄텍스트");
-            builder.setOngoing(true);
-            Intent tabIntent = new Intent(this, EndalarmActivity.class);
-            PendingIntent pi = PendingIntent.getActivity(this, 0, tabIntent, 0);
-            builder.setContentIntent(pi);
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-            NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, builder.build());
 
-            notificationManager.notify(1, builder.build());
-        //}
-
-        //startServiceOreoCondition(intent);
         return START_NOT_STICKY;
     }
 
