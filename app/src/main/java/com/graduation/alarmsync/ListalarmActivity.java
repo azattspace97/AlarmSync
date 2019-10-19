@@ -56,13 +56,6 @@ public class ListalarmActivity extends Activity {
             btn.setLayoutParams(params);
 
             btn.setText(msg);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent mService = new Intent(getApplicationContext(), AlarmSoundService.class);
-                    getApplicationContext().stopService(mService);
-                }
-            });
 
             binding.testlayout.addView(btn);
             cursor.moveToNext();

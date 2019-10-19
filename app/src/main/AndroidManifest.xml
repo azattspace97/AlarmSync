@@ -26,10 +26,16 @@
         <activity android:name=".SettingActivity" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".AddalarmActivity" />
+        <activity android:name=".EndalarmActivity" />
         <activity android:name=".GroupalarmActivity" />
         <activity android:name=".ListalarmActivity"
             android:parentActivityName=".MainActivity"/>
         <receiver android:name=".Alarm_Receiver">
+            <intent-filter>
+                <action android:name="com.graduation.alarmsync.ALARM_START" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".AlarmNotAccept">
             <intent-filter>
                 <action android:name="com.graduation.alarmsync.ALARM_START" />
             </intent-filter>

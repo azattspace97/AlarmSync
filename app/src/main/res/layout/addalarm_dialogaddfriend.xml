@@ -33,9 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
+        android:hint="그룹알람의 제목을 입력하세요."
         android:textColor="#000000"
-        android:textSize="16dp"
-        android:hint="그룹알람의 제목을 입력하세요."/>
+        android:textSize="16dp" />
 
     <View
         android:layout_width="match_parent"

@@ -19,6 +19,7 @@ import com.graduation.alarmsync.databinding.ActivityGroupalarmBinding;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.ExecutionException;
 
 public class GroupalarmActivity extends Activity {
     String id = "";
@@ -31,8 +32,6 @@ public class GroupalarmActivity extends Activity {
 
         id = getIntent().getStringExtra("id");
         pwd = getIntent().getStringExtra("pwd");
-        Log.d("test", "test:"+id);
-        Log.d("test", "test:"+pwd);
         try {
             String getlist = new AlarmTask().execute("get", id, pwd).get();
 
@@ -51,11 +50,18 @@ public class GroupalarmActivity extends Activity {
                 String groupName = tempAlarm.get(0);
                 String time = tempAlarm.get(1);
 
-                String msg = "알람제목:" + groupName + " 시간:" + time;
+                String m = time.substring(4, 6);
+                String d = time.substring(6, 8);
+                String h = time.substring(8, 10);
+                String mi = time.substring(10, 12);
 
+                String msg = String.format("제목:%s  시간:%s월 %s일 %s시 %s분", groupName, m, d, h, mi);
+
+                /* 그룹알람 사람들 목록
                 for(int j = 2; j < tempAlarm.size(); j++) {
                     msg += tempAlarm.get(j) + ",";
                 }
+                */
 
                 final Button btn = (Button)getLayoutInflater().inflate(R.layout.btnalarm, null);
                 btn.setId(i);
@@ -64,6 +70,7 @@ public class GroupalarmActivity extends Activity {
                 btn.setLayoutParams(params);
 
                 btn.setText(msg);
+
                 /* 이곳은 그룹알람버튼을 눌렀을대 동작할 코드임
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -73,12 +80,9 @@ public class GroupalarmActivity extends Activity {
                     }
                 });*/
 
-                binding.testlayout.addView(btn);
-
                 AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                Intent mintent = new Intent(GroupalarmActivity.this, Alarm_Receiver.class);
-                Log.d("test", "test:000");
-                Log.d("test", "test:time="+time);
+                Intent mintent = new Intent(GroupalarmActivity.this, AlarmSoundService.class);
+
                 Calendar cal = Calendar.getInstance();
                 cal.set(Calendar.YEAR, Integer.parseInt(time.substring(0, 4)));
                 cal.set(Calendar.MONTH, Integer.parseInt(time.substring(4, 6))-1);
@@ -87,19 +91,22 @@ public class GroupalarmActivity extends Activity {
                 cal.set(Calendar.MINUTE, Integer.parseInt(time.substring(10)));
                 cal.set(Calendar.SECOND, 0);
 
-                Log.d("test", "test:111");
-                SimpleDateFormat recode = new SimpleDateFormat("MMddHHmm");
-                String code = recode.format(cal.getTime());
-                Log.d("test", "test:222");
+                if(cal.getTimeInMillis() > System.currentTimeMillis()) {
+                    SimpleDateFormat recode = new SimpleDateFormat("MMddHHmm");
+                    String code = recode.format(cal.getTime());
 
-                mintent.putExtra("id", code);
-                mintent.putExtra("message", groupName);
+                    mintent.putExtra("id", code);
+                    mintent.putExtra("groupName", groupName);
 
-                PendingIntent mpending = PendingIntent.getBroadcast(
-                        getApplicationContext(), Integer.parseInt(code), mintent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent mpending = PendingIntent.getService(
+                            getApplicationContext(), Integer.parseInt(code), mintent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
-                Toast.makeText(getApplicationContext(), "그룹 알람이 설정됨 Code:"+code, Toast.LENGTH_SHORT).show();
+                    malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
+                    binding.testlayout.addView(btn);
+                } else {    // 그룹알람의 Time이 옛날일 경우 그냥 삭제해버리기
+                    try { new AlarmTask().execute("delete", id, pwd, groupName).get(); }
+                    catch(Exception e) {}
+                }
             }
         } catch (Exception e) { Log.d("test", "testException:"+e.toString()); }
 /*

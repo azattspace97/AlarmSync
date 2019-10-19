@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_alignParentLeft="true"
-                android:text="9월 30일"
+                android:text="오늘"
                 android:textSize="20dp"
                 />
 
@@ -213,6 +213,7 @@
                 android:layout_below="@+id/settingNameLayout"
                 >
                 <Button
+                    android:id="@+id/testbtn"
                     style="@style/addalarm_btnsetting"
                     android:text="알람음"/>
                 <View style="@style/addalarm_lineheight"/>

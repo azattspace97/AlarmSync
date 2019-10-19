@@ -92,6 +92,7 @@ public class AddalarmActivity extends Activity {
                         binding.groupLayoutFriendsImage.setVisibility(View.VISIBLE);
                         binding.groupLayoutDotdot.setVisibility(View.VISIBLE);
                         binding.groupLayoutAddFriends.setVisibility(View.VISIBLE);
+                        binding.addalarmEtalarmname.setVisibility(View.INVISIBLE);
                         groupAlarm = true;
 
                     } else {
@@ -100,6 +101,7 @@ public class AddalarmActivity extends Activity {
                         binding.groupLayoutFriendsImage.setVisibility(View.INVISIBLE);
                         binding.groupLayoutDotdot.setVisibility(View.INVISIBLE);
                         binding.groupLayoutAddFriends.setVisibility(View.INVISIBLE);
+                        binding.addalarmEtalarmname.setVisibility(View.VISIBLE);
                         groupAlarm = false;
                         binding.invisibleTextview.setText("");
                     }
@@ -146,9 +148,9 @@ public class AddalarmActivity extends Activity {
                                           @RequiresApi(api = Build.VERSION_CODES.M)
                                           @Override
                                           public void onClick(View v) {
-                                              AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                              final AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-                                              Intent mintent = new Intent(AddalarmActivity.this, Alarm_Receiver.class);
+                                              final Intent mintent = new Intent(AddalarmActivity.this, AlarmSoundService.class);
 
                                               Calendar cal = Calendar.getInstance();
                                               if(mYear != 0) {
@@ -169,10 +171,21 @@ public class AddalarmActivity extends Activity {
                                               mintent.putExtra("id", code);
                                               mintent.putExtra("message", msg);
 
-                                              PendingIntent mpending = PendingIntent.getBroadcast(
+                                              final PendingIntent mpending = PendingIntent.getService(
                                                       getApplicationContext(), Integer.parseInt(code), mintent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                                               malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
+
+                                              /* 테스트 코드
+                                              binding.testbtn.setOnClickListener(new View.OnClickListener() {
+                                                  @Override
+                                                  public void onClick(View view) {
+                                                      stopService(mintent);
+                                                      mpending.cancel();
+                                                      malarm.cancel(mpending);
+                                                      Log.d("test", "test:버튼누름0");
+                                                  }
+                                              });*/
 
                                               int month = cal.get(Calendar.MONTH) + 1;
                                               Toast.makeText(AddalarmActivity .this,"Alarm 예정 " + cal.get(Calendar.YEAR) + "년 " + month + "월"

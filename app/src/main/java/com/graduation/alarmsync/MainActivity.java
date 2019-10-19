@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (requestCode == 123) {
             // Toast.makeText(MainActivity.this, "알람추가 성공.", Toast.LENGTH_SHORT).show();
-            ListIntent.putExtra("type", "update");
-            startActivityForResult(ListIntent, 456);
+            //ListIntent.putExtra("type", "update");
+            //startActivityForResult(ListIntent, 456);
         }
         else if(requestCode == 456) {
             // Toast.makeText(MainActivity.this, "버튼추가 성공.", Toast.LENGTH_SHORT).show();
