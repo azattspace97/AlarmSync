@@ -201,12 +201,20 @@ public class AddalarmActivity extends Activity {
                                                   try {
                                                       String retmsg = new AlarmTask().execute("create", id, pwd, groupName, friendList[0], time).get();
                                                       if(retmsg.equals("ok")) {
-                                                          Log.d("test", "test:AddalarmActivity/208번째줄");
+                                                          Log.d("test", "test:AddalarmActivity/204번째줄");
+                                                      }
+
+                                                      for(int i = 1; i < friendList.length; i++) {
+                                                          new AlarmTask().execute("addfriend", id, pwd, friendList[i], groupName).get();
+                                                          Log.d("test", "test:AddalarmActivity/209번째줄:"+friendList[i]);
                                                       }
 
                                                       mintent.putExtra("id", id);
                                                       mintent.putExtra("groupName", groupName);
-                                                  } catch(Exception e) {}
+                                                  } catch(Exception e) {
+                                                      Log.d("test", "test:AddalarmActivity/"+e.toString());
+                                                      MainActivity.printStackTrace(e);
+                                                  }
                                               }
                                               else {
                                                   malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
