@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -20,7 +19,6 @@ import com.graduation.alarmsync.databinding.ActivityGroupalarmBinding;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.concurrent.ExecutionException;
 
 public class GroupalarmActivity extends Activity {
     String id = "";

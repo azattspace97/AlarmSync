@@ -17,13 +17,6 @@ public class SettingActivity extends Activity {
         super.onCreate(savedInstanceState);
         final ActivitySettingBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_setting);
 
-        /*
-        Drawable d = ContextCompat.getDrawable(SettingActivity.this, R.drawable.setting_notice);
-        d.setBounds(0, 0, (int)(d.getIntrinsicWidth()*0.5), (int)(d.getIntrinsicHeight()*0.5));
-        ScaleDrawable sd = new ScaleDrawable(d, 0, 100, 100);
-        binding.btnNotice.setCompoundDrawables(sd.getDrawable(), null, null, null);
-        */
-
         setIcon(getResources().getDrawable(R.mipmap.setting_notice), binding.btnNotice);
         setIcon(getResources().getDrawable(R.mipmap.setting_version), binding.btnVersion);
     }

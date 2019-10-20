@@ -2,13 +2,11 @@ package com.graduation.alarmsync;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;

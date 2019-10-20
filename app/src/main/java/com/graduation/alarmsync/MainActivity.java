@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 
 import com.graduation.alarmsync.databinding.ActivityMainBinding;
@@ -19,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean LoginCheck = false;
     private String id = "";
     private String pwd = "";
-    private String nickname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this, this.getApplicationInfo().dataDir + "/alarm.db");
         ListIntent = new Intent(MainActivity.this, ListalarmActivity.class);
-        /*  ############### 로딩화면 뜨게 하는 코드, 나중에 주석 해제
+        //  ############### 로딩화면 뜨게 하는 코드, 나중에 주석 해제
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
-        */
 
         binding.btnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("login", LoginCheck);
                 intent.putExtra("id", id);
                 intent.putExtra("pwd", pwd);
-                // startActivity(intent);
                 startActivityForResult(intent, 123);
             }
         });
