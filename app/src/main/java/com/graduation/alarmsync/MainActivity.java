@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -112,5 +113,14 @@ public class MainActivity extends AppCompatActivity {
         else if(requestCode == 456) {
             // Toast.makeText(MainActivity.this, "버튼추가 성공.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static void printStackTrace(Exception e){
+        StringBuffer sb = new StringBuffer();
+        StackTraceElement[] stackTraceElement = e.getStackTrace();
+        for( StackTraceElement element : stackTraceElement ){
+            sb.append( element.toString() + "\n" );
+        }
+        Log.e("StackTrace:", sb.toString());
     }
 }

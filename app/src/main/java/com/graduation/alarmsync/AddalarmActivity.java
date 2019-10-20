@@ -11,10 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -166,15 +164,11 @@ public class AddalarmActivity extends Activity {
                                               SimpleDateFormat recode = new SimpleDateFormat("MMddHHmm");
                                               String time = timeformat.format(cal.getTime());
                                               String code = recode.format(cal.getTime());
+
                                               String msg = binding.addalarmEtalarmname.getText().toString();
-                                              if(msg.isEmpty()) msg = "알람입니다.";
-                                              mintent.putExtra("id", code);
-                                              mintent.putExtra("message", msg);
 
                                               final PendingIntent mpending = PendingIntent.getService(
                                                       getApplicationContext(), Integer.parseInt(code), mintent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                                              malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
 
                                               /* 테스트 코드
                                               binding.testbtn.setOnClickListener(new View.OnClickListener() {
@@ -207,12 +201,21 @@ public class AddalarmActivity extends Activity {
                                                   try {
                                                       String retmsg = new AlarmTask().execute("create", id, pwd, groupName, friendList[0], time).get();
                                                       if(retmsg.equals("ok")) {
-                                                          Log.d("test", "test:Success");
+                                                          Log.d("test", "test:AddalarmActivity/208번째줄");
                                                       }
 
+                                                      mintent.putExtra("id", id);
+                                                      mintent.putExtra("groupName", groupName);
                                                   } catch(Exception e) {}
                                               }
-                                              else InsertAlarmDB(time, 0, 0, 0, msg, "test");
+                                              else {
+                                                  malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
+                                                  InsertAlarmDB(time, 0, 0, 0, msg, "test");
+                                                  if(msg.isEmpty()) msg = "알람입니다.";
+                                                  mintent.putExtra("id", code);
+                                                  mintent.putExtra("message", msg);
+                                                  mintent.putExtra("type", "basic");
+                                              }
 
                                               setResult(RESULT_OK);
                                               finish();
@@ -240,7 +243,7 @@ public class AddalarmActivity extends Activity {
                 "'" + message + "', " +
                 "'" + alert + "')";
 
-        Log.d("SQL Insert", "InsertAlarmDB: " + sqlInsert);
+        Log.d("test", "test:AddalarmActity/247번째줄" + sqlInsert);
         db.execSQL(sqlInsert);
     }
 }

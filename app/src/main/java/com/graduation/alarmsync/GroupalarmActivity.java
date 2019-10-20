@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -47,7 +48,15 @@ public class GroupalarmActivity extends Activity {
                         tempAlarm.add(tempList[j]);
                 }
 
-                String groupName = tempAlarm.get(0);
+/*
+                Log.d("test:", "test:GroupalarmActivity/50번째줄/AlarmList:"+AlarmList.length);
+                Log.d("test:", "test:GroupalarmActivity/50번째줄/tempList:"+tempList);
+                Log.d("test:", "test:GroupalarmActivity/50번째줄/tempList.length:"+tempList.length);
+                Log.d("test:", "test:GroupalarmActivity/50번째줄/tempAlarm:"+tempAlarm);
+                Log.d("test:", "test:GroupalarmActivity/50번째줄/tempAlarm.size():"+tempAlarm.size());
+*/
+
+                final String groupName = tempAlarm.get(0);
                 String time = tempAlarm.get(1);
 
                 String m = time.substring(4, 6);
@@ -71,14 +80,20 @@ public class GroupalarmActivity extends Activity {
 
                 btn.setText(msg);
 
-                /* 이곳은 그룹알람버튼을 눌렀을대 동작할 코드임
+                // 이곳은 그룹알람버튼을 눌렀을대 동작할 코드임
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mService = new Intent(getApplicationContext(), AlarmSoundService.class);
-                        getApplicationContext().stopService(mService);
+                        Intent wakelist = new Intent(getApplicationContext(), GroupalarmNotAcceptListActivity.class);
+                        wakelist.putExtra("id", id);
+                        wakelist.putExtra("pwd", pwd);
+                        wakelist.putExtra("groupName", groupName);
+
+                        startActivity(wakelist);
                     }
-                });*/
+                });
+
+                binding.testlayout.addView(btn);
 
                 AlarmManager malarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 Intent mintent = new Intent(GroupalarmActivity.this, AlarmSoundService.class);
@@ -95,20 +110,26 @@ public class GroupalarmActivity extends Activity {
                     SimpleDateFormat recode = new SimpleDateFormat("MMddHHmm");
                     String code = recode.format(cal.getTime());
 
-                    mintent.putExtra("id", code);
+                    mintent.putExtra("id", id);
                     mintent.putExtra("groupName", groupName);
+                    mintent.putExtra("type", "group");
 
                     PendingIntent mpending = PendingIntent.getService(
                             getApplicationContext(), Integer.parseInt(code), mintent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                     malarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), mpending);
-                    binding.testlayout.addView(btn);
+                    Log.d("test", "test:GroupalarmActivity/alarmset:"+groupName);
                 } else {    // 그룹알람의 Time이 옛날일 경우 그냥 삭제해버리기
-                    try { new AlarmTask().execute("delete", id, pwd, groupName).get(); }
+                    try {
+                        // new AlarmTask().execute("delete", id, pwd, groupName).get();
+                        // 걍 냅두기 나중에 꾸욱눌러서삭제
+                    }
                     catch(Exception e) {}
                 }
             }
-        } catch (Exception e) { Log.d("test", "testException:"+e.toString()); }
+        } catch (Exception e) { Log.d("test", "test:GroupalarmActivity/115번째줄"+e.toString());
+            MainActivity.printStackTrace(e); }
+
 /*
         for(int i = 0; i < len; i++) {
             String time = cursor.getString(0);
@@ -150,6 +171,4 @@ public class GroupalarmActivity extends Activity {
         setResult(RESULT_OK);
         */
     }
-
-
 }
